@@ -41,6 +41,8 @@ if st.button("🚀 Process Numbers"):
         st.warning("⚠️ Please enter the 1st number.")
     elif not fiftieth_number.strip():
         st.warning("⚠️ Please enter the 50th number.")
+    elif not file_name.strip() and not batch_name.strip():
+        st.warning("⚠️ Please enter a file name or a batch name.")
     else:
         first_number_fmt = format_number(first_number)
         fiftieth_number_fmt = format_number(fiftieth_number)
@@ -78,10 +80,7 @@ if st.button("🚀 Process Numbers"):
                 st.success(f"✅ Generated {total_batches} batch(es).")
                 st.text_area("📋 Output Preview:", value=output_str, height=300)
 
-                # Decide file name
                 file_display_name = batch_name.strip() if batch_name.strip() else file_name.strip()
-                if not file_display_name:
-                    file_display_name = "output"
 
                 download_file = io.StringIO(output_str)
                 st.download_button(
