@@ -57,18 +57,21 @@ if st.button("🚀 Process Numbers"):
             if total_batches == 0:
                 st.info("You need at least 1 number to make a batch.")
             else:
-                output_lines = []
-                for i in range(total_batches):
-                    start = i * batch_size
-                    end = min(start + batch_size, len(formatted_numbers))
-                    middle_48 = formatted_numbers[start:end]
-                    batch = [first_number_fmt] + middle_48 + [fiftieth_number_fmt]
-                    if batch_name:
-    output_lines.append(f"{batch_name} Batch {i+1}:")
-else:
-    output_lines.append(f"Batch {i+1}:")
-output_lines.extend(batch)
-output_lines.append("")  # Blank line between batches
+    output_lines = []
+    for i in range(total_batches):
+        start = i * batch_size
+        end = min(start + batch_size, len(formatted_numbers))
+        middle_48 = formatted_numbers[start:end]
+        batch = [first_number_fmt] + middle_48 + [fiftieth_number_fmt]
+        
+        if batch_name:
+            output_lines.append(f"{batch_name} Batch {i+1}:")
+        else:
+            output_lines.append(f"Batch {i+1}:")
+        
+        output_lines.extend(batch)
+        output_lines.append("")  # Blank line between batches
+
 
 
                 output_str = "\n".join(output_lines)
