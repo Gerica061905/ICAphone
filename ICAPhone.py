@@ -64,9 +64,12 @@ if st.button("🚀 Process Numbers"):
                     middle_48 = formatted_numbers[start:end]
                     batch = [first_number_fmt] + middle_48 + [fiftieth_number_fmt]
                     if batch_name:
-                        output_lines.append(f"{batch_name} Batch {i+1}:")
-                    output_lines.extend(batch)
-                    output_lines.append("")  # Blank line between batches
+    output_lines.append(f"{batch_name} Batch {i+1}:")
+else:
+    output_lines.append(f"Batch {i+1}:")
+output_lines.extend(batch)
+output_lines.append("")  # Blank line between batches
+
 
                 output_str = "\n".join(output_lines)
                 st.success(f"Generated {total_batches} batch(es).")
