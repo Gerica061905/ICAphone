@@ -4,7 +4,7 @@ import math
 import io
 
 st.set_page_config(page_title="ICAPhone", layout="centered")
-st.title("📱 ICAPhone Formatter")
+st.title("📱 ICAPhone")
 st.markdown("""
 Enter any phone numbers below. This app will:
 - Clean and format them to **+63 format**
@@ -28,10 +28,10 @@ def format_number(number):
 
 # --- User Inputs ---
 input_text = st.text_area("Enter phone numbers (any format):", height=200)
-batch_name = st.text_input("Optional Batch Name:")
-first_number = st.text_input("Enter the 1st number:")
-fiftieth_number = st.text_input("Enter the 50th number:")
-file_name = st.text_input("Enter a name for your output file (without .txt):", value="output")
+batch_name = st.text_input("(Optional) Batch Name:")
+first_number = st.text_input("1st number:")
+fiftieth_number = st.text_input("50th number:")
+file_name = st.text_input("file name:", value="output")
 
 if st.button("🚀 Process Numbers"):
     if not input_text.strip():
