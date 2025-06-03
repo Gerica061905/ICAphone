@@ -32,7 +32,7 @@ input_text = st.text_area("Enter phone numbers (any format):", height=200)
 batch_name = st.text_input("(Optional) Batch Name:")
 first_number = st.text_input("1st number:")
 fiftieth_number = st.text_input("50th number:")
-file_name = st.text_input("File name:", value="")
+file_name = st.text_input("File name (required):", value="")
 
 if st.button("🚀 Process Numbers"):
     if not input_text.strip():
@@ -41,8 +41,8 @@ if st.button("🚀 Process Numbers"):
         st.warning("⚠️ Please enter the 1st number.")
     elif not fiftieth_number.strip():
         st.warning("⚠️ Please enter the 50th number.")
-    elif not file_name.strip() and not batch_name.strip():
-        st.warning("⚠️ Please enter a file name or a batch name.")
+    elif not file_name.strip():
+        st.warning("⚠️ Please enter a file name.")
     else:
         first_number_fmt = format_number(first_number)
         fiftieth_number_fmt = format_number(fiftieth_number)
@@ -80,12 +80,10 @@ if st.button("🚀 Process Numbers"):
                 st.success(f"✅ Generated {total_batches} batch(es).")
                 st.text_area("📋 Output Preview:", value=output_str, height=300)
 
-                file_display_name = batch_name.strip() if batch_name.strip() else file_name.strip()
-
                 download_file = io.StringIO(output_str)
                 st.download_button(
                     label="📥 Download .txt",
                     data=download_file.getvalue(),
-                    file_name=f"{file_display_name}({total_batches}x).txt",
+                    file_name=f"{file_name.strip()}({total_batches}x).txt",
                     mime="text/plain"
                 )
