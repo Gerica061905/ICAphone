@@ -31,7 +31,7 @@ input_text = st.text_area("Enter phone numbers (any format):", height=200)
 batch_name = st.text_input("(Optional) Batch Name:")
 first_number = st.text_input("1st number:")
 fiftieth_number = st.text_input("50th number:")
-file_name = st.text_input("file name:", value="output")
+file_name = st.text_input("file name:", value=" ")
 
 if st.button("🚀 Process Numbers"):
     if not input_text.strip():
