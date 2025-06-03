@@ -72,15 +72,19 @@ if st.button("🚀 Process Numbers"):
                     output_lines.extend(batch)
                     output_lines.append("")  # Blank line between batches
 
-                output_str = "\n".join(output_lines)
-                st.success(f"Generated {total_batches} batch(es).")
-                st.text_area("📋 Output Preview:", value=output_str, height=300)
+                    output_str = "\n".join(output_lines)
+    st.success(f"Generated {total_batches} batch(es).")
+    st.text_area("📋 Output Preview:", value=output_str, height=300)
 
-                # Download as text file
-                download_file = io.StringIO(output_str)
-                st.download_button(
-                    label="📥 Download .txt",
-                    data=download_file.getvalue(),
-                    file_name=f"{file_name.strip()}({total_batches}x).txt",
-                    mime="text/plain"
-                )
+    download_file = io.StringIO(output_str)
+
+    file_display_name = file_name.strip()
+    if batch_name.strip():
+        file_display_name = batch_name.strip()
+
+    st.download_button(
+        label="📥 Download .txt",
+        data=download_file.getvalue(),
+        file_name=f"{file_display_name}({total_batches}x).txt",
+        mime="text/plain"
+    )
