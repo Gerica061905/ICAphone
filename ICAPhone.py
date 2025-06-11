@@ -84,6 +84,6 @@ if st.button("🚀 Process Numbers"):
                 st.download_button(
                     label="📥 Download .txt",
                     data=download_file.getvalue(),
-                    file_name=f"{file_name.strip()}({total_batches}x).txt"
+                    file_name=f"{file_name.strip()}({total_batches}x).txt",
                     mime="text/plain"
-                
+                )
