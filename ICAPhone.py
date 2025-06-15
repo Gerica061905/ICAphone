@@ -58,7 +58,7 @@ if st.button("🚀 Process Numbers"):
             formatted_numbers = list(dict.fromkeys(formatted_numbers))
 
             batch_size = 48
-            max_batches = 200
+            max_batches = 1000
             total_batches = min(max_batches, math.ceil(len(formatted_numbers) / batch_size))
 
             if total_batches == 0:
@@ -71,7 +71,7 @@ if st.button("🚀 Process Numbers"):
                     middle_48 = formatted_numbers[start:end]
                     batch = [first_number_fmt] + middle_48 + [fiftieth_number_fmt]
 
-                    title = f"{batch_name.strip()} Batch {i+1}:" if batch_name.strip() else f"Batch {i+1}:"
+                    title = f"{batch_name.strip()} {i+1}:" if batch_name.strip() else f"{i+1}:"
                     output_lines.append(title)
                     output_lines.extend(batch)
                     output_lines.append("")  # Blank line between batches
