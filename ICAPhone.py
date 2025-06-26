@@ -15,26 +15,23 @@ Enter any phone numbers below. This app will:
 # --- Formatting function ---
 def format_number(number):
     number = str(number).strip()
-    number = ''.join(filter(str.isdigit, number))  # Remove any non-digit
+    
+    # Remove all non-digit characters
+    number = ''.join(filter(str.isdigit, number))
 
-    # Handle numbers starting with '0' (e.g. 09xxxxxxxxx)
+    # Normalize different common valid formats to +63 format
     if number.startswith('0') and len(number) == 11 and number[1] == '9':
         number = '63' + number[1:]
-
-    # Handle 10-digit numbers starting with 9 (e.g. 9xxxxxxxxx)
     elif len(number) == 10 and number.startswith('9'):
         number = '63' + number
-
-    # Handle already formatted numbers starting with 63
     elif number.startswith('63') and len(number) == 12:
         pass
-
-    # Handle already formatted numbers starting with 639
     elif number.startswith('639') and len(number) == 12:
         pass
-
+    elif number.startswith('+639') and len(number) == 13:
+        number = number[1:]  # remove '+' to avoid duplication
     else:
-        return None
+        return None  # Invalid format
 
     return '+' + number
 
